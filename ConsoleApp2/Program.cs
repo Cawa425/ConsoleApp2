@@ -5,7 +5,6 @@ using System.Net;
 using System.Security.Cryptography;
 using Newtonsoft.Json.Linq;
 
-using BlockChainDemo;
 
 namespace ConsoleApp2
 {
