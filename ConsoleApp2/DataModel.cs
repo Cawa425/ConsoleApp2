@@ -4,20 +4,7 @@ namespace ConsoleApp2
 {
     public class DataModel
     {
-        public double w11;
-        public double w12;
-        public double w21;
-        public double w22;
-        public double v11;
-        public double v12;
-        public double v13;
-        public double v21;
-        public double v22;
-        public double v23;
-        public double w1 ;
-        public double w2 ;
-        public double w3 ;
-        public double e;
+        public double w11, w12, w21, w22, v11, v12, v13, v21, v22, v23, w1, w2, w3, e;
         public string publickey;
         
         public DataModel(double d, double d1, double d2, double d3, double d4, double d5, double d6, double d7, double d8, double d9, double d10, double d11, double d12)
