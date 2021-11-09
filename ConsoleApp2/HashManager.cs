@@ -1,22 +1,39 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Newtonsoft.Json.Linq;
 
 namespace ConsoleApp2
 {
-    public class HashManager
+    public static class HashManager
     {
-        public static string HashString(string text)
+        public static string FromHexString(string hexString)
         {
-            var crypt = new SHA256Managed();
-            string hash = String.Empty;
-            byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(text));
-            foreach (byte theByte in crypto)
+            var bytes = new byte[hexString.Length / 2];
+            for (var i = 0; i < bytes.Length; i++)
             {
-                hash += theByte.ToString("x2");
+                bytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
             }
-            return hash;
+
+            return Encoding.Unicode.GetString(bytes); // returns: "Hello world" for "48656C6C6F20776F726C64"
         }
+        
+        // public static string HashString(string text)
+        // {
+        //     var crypt = new SHA256Managed();
+        //     var hash = String.Empty;
+        //     var crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(text));
+        //     foreach (byte theByte in crypto)
+        //     {
+        //         hash += theByte.ToString("x2");
+        //     }
+        //     return hash;
+        // }
+        
         public static string SignData(string originalMessage)
         {
             string success = "";

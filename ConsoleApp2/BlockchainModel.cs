@@ -3,7 +3,7 @@
     public class BlockchainModel
     {
         public string prevhash;
-        public string data;
+        public DataModel data;
         public string signature;
         public string info;
         public string ts;
