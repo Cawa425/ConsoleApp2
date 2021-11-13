@@ -41,7 +41,7 @@ namespace ConsoleApp2
         {
             var h11 = f(x1 * w11 + x2 * w21);
             var h12 = f(x1 * w12 + x2 * w22);
-            return f(f(h11 * v11 + h12 * v21) * w1 + f(h11 * v12 + h12 * v22) * w2 + f(h11 * v13 + h12 * v23));
+            return f(f(h11 * v11 + h12 * v21) * w1 + f(h11 * v12 + h12 * v22) * w2 + f(h11 * v13 + h12 * v23) *w3);
         }
 
         public DataModel Start(JToken? jToken)

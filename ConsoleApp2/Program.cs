@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Org.BouncyCastle.Utilities.Encoders;
@@ -41,6 +42,18 @@ namespace ConsoleApp2
             var output = JsonConvert.SerializeObject(bm);
             var path = $"http://188.93.211.195/newblock?block={output}";
             var response2 = Get(path);
+            
+            //nice hash btw
+            var tmp = response2.Split(',');
+            var hash = Regex.Split(tmp[1], "Hash error. Last block has hash: ").Last();
+            hash = hash.Remove(hash.Length - 1, 1);
+
+            bm.prevhash = hash;
+            
+            
+            output = JsonConvert.SerializeObject(bm);
+            path = $"http://188.93.211.195/newblock?block={output}";
+            response2 = Get(path);
         }
 
         public static string Get(string uri)
